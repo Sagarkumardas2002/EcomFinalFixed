@@ -23,7 +23,7 @@ const ProductDetails = () => {
     // Get product details
     const getProduct = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/product/get-product/${params.slug}`);
+            const { data } = await axios.get(`https://ecomfinal.onrender.com/api/v1/product/get-product/${params.slug}`);
             setProduct(data?.product);
             getSimilarProduct(data?.product._id, data?.product.category._id);
         } catch (error) {
@@ -34,7 +34,7 @@ const ProductDetails = () => {
     // Get similar products
     const getSimilarProduct = async (pid, cid) => {
         try {
-            const { data } = await axios.get(`/api/v1/product/related-product/${pid}/${cid}`);
+            const { data } = await axios.get(`https://ecomfinal.onrender.com/api/v1/product/related-product/${pid}/${cid}`);
             setRelatedproducts(data?.products);
         } catch (error) {
             console.log(error);
@@ -48,7 +48,7 @@ const ProductDetails = () => {
                     <div className="col-lg-4 col-md-6 col-sm-8 mx-auto">
                         <div className="mt-5 mb-3 mb-sm-3 p-1" style={{ border: "2px solid #ddd", borderRadius: '4px', overflow: 'hidden', position: 'relative' }}>
                             <img
-                                src={`/api/v1/product/product-photo/${product._id}`}
+                                src={`https://ecomfinal.onrender.com/api/v1/product/product-photo/${product._id}`}
                                 className='card-img-top img-fluid'
                                 alt={product.name}
                                 width="100%"
@@ -96,7 +96,7 @@ const ProductDetails = () => {
                     {relatedProducts?.map((p) => (
                             <div key={p._id} className="card m-3" style={{ width: "22rem" }}>
                                 <img
-                                    src={`/api/v1/product/product-photo/${p._id}`}
+                                src={`https://ecomfinal.onrender.com/api/v1/product/product-photo/${p._id}`}
                                     className="card-img-top"
                                     alt={p.name}
                                     style={{ width: '100%', height: "350px", objectFit: 'cover', borderRadius: "4px" }}

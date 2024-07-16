@@ -23,7 +23,7 @@ const Search = () => {
                         {values?.results.map((p) => (
                             <div key={p._id} className="card m-2" style={{ width: "21rem", maxWidth: "100%", backgroundColor: "orange" }}>
                                 <img
-                                    src={`/api/v1/product/product-photo/${p._id}`}
+                                    src={`https://ecomfinal.onrender.com/api/v1/product/product-photo/${p._id}`}
                                     className="card-img-top"
                                     alt={p.name}
                                     style={{ width: '100%', height: "300px", objectFit: 'cover', borderTopRightRadius: "5px", borderTopLeftRadius: "5px" }}

@@ -16,7 +16,7 @@ const Products = () => {
     // get all products
     const getAllProducts = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+            const { data } = await axios.get(`https://ecomfinal.onrender.com/api/v1/product/product-list/${page}`);
             setLoading(false)
             setProducts(data.products);
         }
@@ -38,7 +38,7 @@ const Products = () => {
     //getTotal Count  
     const getTotal = async () => {
         try {
-            const { data } = await axios.get('/api/v1/product/product-count')
+            const { data } = await axios.get('https://ecomfinal.onrender.com/api/v1/product/product-count')
             setTotal(data?.total)
         }
         catch (error) {
@@ -55,7 +55,7 @@ const Products = () => {
     const LoadMore = async () => {
         try {
             setLoading(true)
-            const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+            const { data } = await axios.get(`https://ecomfinal.onrender.com/api/v1/product/product-list/${page}`);
             setLoading(false)
             setProducts([...products, ...data?.products]);
         }
@@ -87,7 +87,7 @@ const Products = () => {
                         {products?.map((p) => (
                             <Link key={p._id} to={`/dashboard/admin/product/${p.slug}`} className="mt-3 mb-3 product-link">
                                 <div className="card m-3" style={{ width: '18rem', borderRadius: '4px' }} key={p._id}>
-                                    <img src={`/api/v1/product/product-photo/${p._id}`} className='card-img-top ' alt={p.name} style={{ width: "100%", height: '300px', objectFit: 'cover', padding: "1px" }} />
+                                    <img src={`https://ecomfinal.onrender.com/api/v1/product/product-photo/${p._id}`} className='card-img-top ' alt={p.name} style={{ width: "100%", height: '300px', objectFit: 'cover', padding: "1px" }} />
                                     <hr style={{ margin: '0px', color: "gray" }} />
                                     <div className="card-body ">
                                         <h5 className='card-title'> {p.name}</h5>
