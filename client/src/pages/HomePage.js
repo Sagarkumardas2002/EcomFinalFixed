@@ -314,7 +314,7 @@ const HomePage = () => {
 
     return (
         <Layout title={"Sagar's Ecom App-Shop Now....."}>
-            <div className="container-fluid row  mx-auto">
+            <div className="container-fluid row mx-auto">
                 <div className="col-md-2 col-sm-12">
                     <h4 className="text-center mt-4" style={{ color: "maroon" }}>Filter By Category</h4>
                     <hr />
@@ -341,40 +341,42 @@ const HomePage = () => {
                 </div>
                 <div className="col-md-9 col-sm-12">
                     <h1 className="text-center mt-4">All Products</h1>
-                    <Spin spinning={loading}>
-                        <div className="d-flex flex-wrap justify-content-center">
-                            {products?.map((p) => (
-                                <div key={p._id} className="card m-3" style={{ width: "20rem" }}>
-                                    <img
-                                        src={`https://ecomfinal.onrender.com/api/v1/product/product-photo/${p._id}`}
-                                        className="card-img-top"
-                                        alt={p.name}
-                                        style={{ width: '100%', height: '300px', objectFit: 'cover', padding: '1px', borderRadius: "4px" }}
-                                        onMouseOver={(e) => e.target.style.transform = 'scale(0.985)'}
-                                        onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
-                                    />
-                                    <hr style={{ margin: '0px', color: "gray" }} />
-                                    <div className="card-body" style={{ backgroundColor: 'orange', borderRadius: "0 0 3px 3px" }}>
-                                        <h5 className="card-title">{p.name}</h5>
-                                        <p className="card-text">
-                                            {p.description.substring(0, 50)}...
-                                        </p>
-                                        <h5 className="card-text" style={{ fontWeight: 'bold', color: 'black' }}>₹{p.price}</h5>
+                    <div style={{ position: 'relative' }}>
+                        <Spin spinning={loading} size="large" style={{ fontSize: '3em', position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+                            <div className="d-flex flex-wrap justify-content-center">
+                                {products?.map((p) => (
+                                    <div key={p._id} className="card m-3" style={{ width: "20rem" }}>
+                                        <img
+                                            src={`https://ecomfinal.onrender.com/api/v1/product/product-photo/${p._id}`}
+                                            className="card-img-top"
+                                            alt={p.name}
+                                            style={{ width: '100%', height: '300px', objectFit: 'cover', padding: '1px', borderRadius: "4px" }}
+                                            onMouseOver={(e) => e.target.style.transform = 'scale(0.985)'}
+                                            onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+                                        />
+                                        <hr style={{ margin: '0px', color: "gray" }} />
+                                        <div className="card-body" style={{ backgroundColor: 'orange', borderRadius: "0 0 3px 3px" }}>
+                                            <h5 className="card-title">{p.name}</h5>
+                                            <p className="card-text">
+                                                {p.description.substring(0, 50)}...
+                                            </p>
+                                            <h5 className="card-text" style={{ fontWeight: 'bold', color: 'black' }}>₹{p.price}</h5>
 
-                                        <div className='d-flex justify-content-between'>
-                                            <button className="btn btn-primary ms-1 mb-2" onClick={() => navigate(`/product/${p.slug}`)}>MORE DETAILS</button>
+                                            <div className='d-flex justify-content-between'>
+                                                <button className="btn btn-primary ms-1 mb-2" onClick={() => navigate(`/product/${p.slug}`)}>MORE DETAILS</button>
 
-                                            <button className="btn btn-success ms-3 mb-2" onClick={() => {
-                                                setCart([...cart, p]);
-                                                localStorage.setItem("cart", JSON.stringify([...cart, p]));
-                                                toast.success('Item Added to Cart');
-                                            }}>ADD TO CART</button>
+                                                <button className="btn btn-success ms-3 mb-2" onClick={() => {
+                                                    setCart([...cart, p]);
+                                                    localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                                                    toast.success('Item Added to Cart');
+                                                }}>ADD TO CART</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </Spin>
+                                ))}
+                            </div>
+                        </Spin>
+                    </div>
                     <div>
                         {products && products.length < total && (
                             <div className="card m-2" style={{ width: "14rem", backgroundColor: 'transparent', border: 'none' }}>
@@ -394,4 +396,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
