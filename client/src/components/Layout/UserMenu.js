@@ -8,10 +8,7 @@ const UserMenu = () => {
                 <div className="col-8 col-md-12  text-center">
                     <h4 className=" fs-3 mt-3" style={{ color: "maroon" }}>Dashboard</h4>
                     <div className="list-group">
-   
-                        <NavLink to="https://ecomfinal.onrender.com/api/v1/auth/profile" className="list-group-item list-group-item-action">Profile</NavLink>
-                        // <NavLink to="/dashboard/user/profile" className="list-group-item list-group-item-action">Profile</NavLink>
-    
+                        <NavLink to="/dashboard/user/profile" className="list-group-item list-group-item-action">Profile</NavLink>
                         <NavLink to="/dashboard/user/orders" className="list-group-item list-group-item-action">Orders</NavLink>
                     </div>
                 </div>
