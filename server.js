@@ -21,7 +21,7 @@ const app = express();
 //middlewares
 // app.use(cors());
 app.use(cors({
-  origin: 'http//localhost:3000'
+  origin: 'https://ecom-final-fixed.vercel.app'
 }));
 app.use(express.json());
 app.use(morgan('dev'));
