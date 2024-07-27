@@ -19,7 +19,10 @@ connectDB();
 const app = express();
 
 //middlewares
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'https://ecom-final-fixed.vercel.app/'
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 
