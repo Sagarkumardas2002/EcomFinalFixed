@@ -258,3 +258,23 @@ export const orderStatusController = async (req, res) => {
         });
     }
 }
+
+
+export const getAllUsersController = async (req, res) => {
+    try {
+        const users = await userModel.find({});
+        res.status(200).send({
+            success: true,
+            message: "Users fetched successfully",
+            users,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while fetching users",
+            error,
+        });
+    }
+}
+
