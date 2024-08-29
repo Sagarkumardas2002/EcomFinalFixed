@@ -1,30 +1,22 @@
-import express from "express"
+import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
 import authRoute from "./routes/authRoute.js";
-import categoryRoutes from './routes/categoryRoutes.js'
-import productRoutes from './routes/productRoutes.js'
+import categoryRoutes from './routes/categoryRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import cors from 'cors';
 import job from "./crone/crone.js";
 
-//configure env
+// Configure environment variables
 dotenv.config();
 
-//connection
+// Connect to database
 connectDB();
 job.start();
 
-
-//rest object 
+// Create express app
 const app = express();
-
-// //middlewares
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-// }));
-// app.use(express.json());
-// app.use(morgan('dev'));
 
 // CORS configuration
 const allowedOrigins = [
@@ -48,21 +40,20 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 
-//routes
+// Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
-
-//get api
+// Root route
 app.get("/", (_req, res) => {
-    res.send("<h1>Welcome to My Ecommerce App  APP</h1>")
-})
+    res.send("<h1>Welcome to My Ecommerce App</h1>");
+});
 
-//PORT
+// Port
 const PORT = process.env.PORT || 8000;
 
-//run
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server Running In ${process.env.DEV_MODE}  mode on port no ${PORT}`.bgYellow.black);
-})
+    console.log(`Server Running In ${process.env.DEV_MODE} mode on port ${PORT}`.bgYellow.black);
+});
