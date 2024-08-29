@@ -6,12 +6,14 @@ import authRoute from "./routes/authRoute.js";
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import cors from 'cors';
+import job from "./crone/crone.js";
 
 //configure env
 dotenv.config();
 
 //connection
 connectDB();
+job.start();
 
 
 //rest object 
