@@ -10,7 +10,11 @@ const AuthProvider = ({ children }) => {
     });
 
     //default axios
+<<<<<<< HEAD
     axios.defaults.baseURL = 'https://ecomfinal.onrender.com';
+=======
+     axios.defaults.baseURL = 'https://ecomfinal.onrender.com';
+>>>>>>> 99041aa28e8beb0f65f6285d0d6536fef8d9a7f0
     axios.defaults.headers.common['Authorization'] = auth?.token
 
     useEffect(() => {
@@ -36,5 +40,8 @@ const AuthProvider = ({ children }) => {
 // custom Hook
 const useAuth = () => useContext(AuthContext)
 export { useAuth, AuthProvider }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 99041aa28e8beb0f65f6285d0d6536fef8d9a7f0
