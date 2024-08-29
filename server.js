@@ -19,10 +19,32 @@ job.start();
 //rest object 
 const app = express();
 
-//middlewares
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
+// //middlewares
+// app.use(cors({
+//     origin: 'http://localhost:3000'
+// }));
+// app.use(express.json());
+// app.use(morgan('dev'));
+
+// CORS configuration
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://ecom-final-fixed.vercel.app'
+];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true // If your frontend needs to include credentials (like cookies)
+};
+
+// Apply middlewares
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
 
