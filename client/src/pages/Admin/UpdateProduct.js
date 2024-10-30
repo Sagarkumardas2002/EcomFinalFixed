@@ -24,7 +24,7 @@ const UpdateProduct = () => {
     const getSingleProduct = async () => {
         try {
             const { data } = await axios.get(
-                `https://ecomfinal.onrender.com/api/v1/product/get-product/${params.slug}`
+                `https://ecom-final-fixed-backup.onrender.com/api/v1/product/get-product/${params.slug}`
             );
             setName(data.product.name);
             setId(data.product._id);
